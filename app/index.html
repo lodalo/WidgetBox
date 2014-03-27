@@ -47,7 +47,8 @@
                 </div>
                 <div class="col-sm-6">
                     <h4>Here is a widget from X:</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, nulla mollitia repudiandae. Rem quo suscipit inventore voluptate. Aliquid, dolorem, quo, nostrum reiciendis inventore atque alias eveniet rerum fugiat tempora consequatur.</p>
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, nulla mollitia repudiandae. Rem quo suscipit inventore voluptate. Aliquid, dolorem, quo, nostrum reiciendis inventore atque alias eveniet rerum fugiat tempora consequatur.</p>-->
+                    <div id="wnp-ember-widget-two"></div>
                 </div>
             </div>
 
@@ -94,7 +95,7 @@
 <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-1.0.0.js"></script>
 <script src="http://builds.emberjs.com/tags/v1.4.0/ember.js"></script>
 
-<script type="text/x-handlebars">
+<script type="text/x-handlebars" data-template-name="application">
     <h3>Here are the titles in my EMBER library:</h3>
     <div>
         {{#each}}
@@ -110,6 +111,14 @@
     {{#if showDescription}}
         <p>{{yield}}</p>
     {{/if}}
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="widget">
+    This is the widget 2 template.
+    {{#each}}
+        <div>A todo: {{title}}</div>
+    {{/each}}
 </script>
 
 <!-- END ember widget sample 1-->

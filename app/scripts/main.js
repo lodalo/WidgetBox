@@ -34,3 +34,25 @@ App.LibraryBookComponent = Ember.Component.extend({
         }
     }
 });
+
+Widget = Ember.Application.create({
+    rootElement: '#wnp-ember-widget-two'
+});
+
+Widget.Router = Ember.Router.extend({
+  	location: 'none'
+});
+
+Widget.ApplicationRoute = Ember.Route.extend({
+    model: function() {
+    return [{
+        title: "Learn Ember.js"
+      }, {
+        title: "Walk the dog"
+      }];
+    }
+});
+
+//Widget.ApplicationView = Ember.View.create({
+//  templateName: 'application',
+//});
