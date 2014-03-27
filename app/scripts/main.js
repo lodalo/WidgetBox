@@ -1,3 +1,4 @@
+//- APP 1 ------------------------------------------------------
 App = Ember.Application.create({
     rootElement: '#wnp-ember-widget'
 });
@@ -35,6 +36,8 @@ App.LibraryBookComponent = Ember.Component.extend({
     }
 });
 
+//- APP 2------------------------------------------------------
+
 Widget = Ember.Application.create({
     rootElement: '#wnp-ember-widget-two'
 });
@@ -44,15 +47,15 @@ Widget.Router = Ember.Router.extend({
 });
 
 Widget.ApplicationRoute = Ember.Route.extend({
+    renderTemplate: function() {
+    	this.render('widget');
+  	},
     model: function() {
     return [{
         title: "Learn Ember.js"
-      }, {
+      },
+      {
         title: "Walk the dog"
       }];
     }
 });
-
-//Widget.ApplicationView = Ember.View.create({
-//  templateName: 'application',
-//});
