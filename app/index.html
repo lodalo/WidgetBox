@@ -33,21 +33,21 @@
                 <ul class="nav nav-pills pull-right">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
                 </ul>
                 <h3 class="text-muted">Widget Box</h3>
             </div>
 
-            <div class="jumbotron">
                 <h1>'Allo, 'Allo!</h1>
                 <p class="lead">This is the widget box.</p>
-                <p><a class="btn btn-lg btn-success" href="#">love it! <span class="glyphicon glyphicon-ok"></span></a></p>
-            </div>
 
-            <div class="row marketing">
-                <div class="col-lg-6">
-                    <h4>Here is a widget with Ember:</h4>
-
+            <div class="row widgets">
+                <div class="ember col-sm-6">
+                    <h4>Here is a widget from Ember:</h4>
+                    <div id="wnp-ember-widget"></div>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Here is a widget from X:</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, nulla mollitia repudiandae. Rem quo suscipit inventore voluptate. Aliquid, dolorem, quo, nostrum reiciendis inventore atque alias eveniet rerum fugiat tempora consequatur.</p>
                 </div>
             </div>
 
@@ -90,8 +90,36 @@
         <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
         <!-- endbuild -->
 
+  <!-- BEGIN ember widget sample 1-->
+<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-1.0.0.js"></script>
+<script src="http://builds.emberjs.com/tags/v1.4.0/ember.js"></script>
+
+<script type="text/x-handlebars">
+    <h3>Here are the titles in my EMBER library:</h3>
+    <div>
+        {{#each}}
+            {{#library-book title=title}}
+                {{description}}
+            {{/library-book}}
+        {{/each}}
+    </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="components/library-book">
+    <h4 {{action "toggleDescription"}}>{{title}}</h4>
+    {{#if showDescription}}
+        <p>{{yield}}</p>
+    {{/if}}
+</script>
+
+<!-- END ember widget sample 1-->
+        
+        
+        
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
+        
+        
 </body>
 </html>
