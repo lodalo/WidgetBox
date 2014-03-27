@@ -3,27 +3,34 @@ App = Ember.Application.create({
 });
 
 App.Router = Ember.Router.extend({
-  location: 'none'
+  	location: 'none'
 });
 
 books = [{
-  title: "The Ember way",
-  description: "There are many things to learn, but to learn the right thing is best."
-}, {
-  title: "When you clicked",
-  description: "Once upon a time, a user clicked on a page div..."
+	title: "The Ember way",
+ 	description: "There are many things to learn, but to learn the right thing is best."
+  },
+  {
+  	title: "When you clicked",
+  	description: "Once upon a time, a user clicked on a page div..."
 }];
 
 App.ApplicationRoute = Ember.Route.extend({
-  model: function() {
-    return books; 
-  }
+	model: function() {
+    	return books; 
+  	},
+  	actions: {
+  		bookOpen: function(title){
+			console.log('EMBER library book opened: '+title);
+		}
+  	}
 });
 
 App.LibraryBookComponent = Ember.Component.extend({
     actions: {
         toggleDescription: function(){
 			this.toggleProperty('showDescription');
+            this.sendAction('action',this.get('title'));
         }
     }
 });

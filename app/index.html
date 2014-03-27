@@ -98,7 +98,7 @@
     <h3>Here are the titles in my EMBER library:</h3>
     <div>
         {{#each}}
-            {{#library-book title=title}}
+            {{#library-book title=title action="bookOpen"}}
                 {{description}}
             {{/library-book}}
         {{/each}}
@@ -106,7 +106,7 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="components/library-book">
-    <h4 {{action "toggleDescription"}}>{{title}}</h4>
+    <h4 {{action "toggleDescription" param="title"}}>{{title}}</h4>
     {{#if showDescription}}
         <p>{{yield}}</p>
     {{/if}}
