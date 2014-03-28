@@ -65,7 +65,6 @@ body {
     p + h4 {
         margin-top: 28px;
     }
-    background-color: rgb(214, 214, 214);
 }
 
 /* Responsive: Portrait tablets and up */
@@ -92,7 +91,10 @@ body {
         border-bottom: 0;
     }
 }
-
-.widgets .ember {
+.widgets .one {
     background-color: rgba(167, 229, 224, 0.69)
+}
+
+.widgets .two {
+    background-color: rgba(215, 229, 167, 0.69)
 }

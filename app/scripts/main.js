@@ -44,6 +44,7 @@ Widget = Ember.Application.create({
     LOG_ACTIVE_GENERATION: true,
     rootElement: '#wnp-ember-widget-two'
 });
+Widget.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 Widget.Router = Ember.Router.extend({
   	location: 'none'
@@ -51,6 +52,7 @@ Widget.Router = Ember.Router.extend({
 
 Widget.Router.map(function(){
     this.route('anotheroo');
+    this.route('fridge');
 });
 
 Widget.ApplicationRoute = Ember.Route.extend({
@@ -68,10 +70,14 @@ Widget.ApplicationRoute = Ember.Route.extend({
     actions: {
         transitionToAnother: function(){
             this.transitionTo('anotheroo');
+        },
+        transitionToFridge: function(){
+            this.transitionTo('fridge');
         }
     }
 });
 
+//---------------------------
 Widget.AnotherooRoute = Ember.Route.extend({
     renderTemplate: function() {
         this.render('anotheroo');
@@ -80,3 +86,37 @@ Widget.AnotherooRoute = Ember.Route.extend({
        return {data: "anotheroo anotheroo!!!!!"}
     }
 });
+
+//----------------------------
+Widget.Fridge = DS.Model.extend({
+    name: DS.attr('string'),
+    expirationDate: DS.attr('date', {
+      defaultValue: function() { return new Date(); }
+    }),
+    type: DS.attr('string'),
+    item: function(){
+        return this.get('name') + " [stored on " + this.get('expirationDate') +"]";
+    }.property('name')
+});
+
+Widget.FridgeRoute = Ember.Route.extend({
+    renderTemplate: function() {
+        this.render('fridge');
+    },
+    model: function(){
+       return this.get('store').find('fridge');
+    }
+});
+
+Widget.Fridge.FIXTURES = [
+    {
+        id: 1,
+        name: "broccoli",
+        type: "vegetable"
+    },
+    {
+        id: 2,
+        name: "apple",
+        type: "fruit"
+    }
+];
