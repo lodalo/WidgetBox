@@ -36,9 +36,12 @@ App.LibraryBookComponent = Ember.Component.extend({
     }
 });
 
-//- APP 2------------------------------------------------------
+//- APP 2 ------------------------------------------------------
 
 Widget = Ember.Application.create({
+    LOG_TRANSITIONS: true,
+    LOG_TRANSITIONS_INTERNAL: true,
+    LOG_ACTIVE_GENERATION: true,
     rootElement: '#wnp-ember-widget-two'
 });
 
@@ -46,16 +49,34 @@ Widget.Router = Ember.Router.extend({
   	location: 'none'
 });
 
+Widget.Router.map(function(){
+    this.route('anotheroo');
+});
+
 Widget.ApplicationRoute = Ember.Route.extend({
     renderTemplate: function() {
     	this.render('widget');
   	},
     model: function() {
-    return [{
-        title: "Learn Ember.js"
-      },
-      {
-        title: "Walk the dog"
-      }];
+        return [{
+            title: "Learn Ember.js"
+          },
+          {
+            title: "Walk the dog"
+          }];
+    },
+    actions: {
+        transitionToAnother: function(){
+            this.transitionTo('anotheroo');
+        }
+    }
+});
+
+Widget.AnotherooRoute = Ember.Route.extend({
+    renderTemplate: function() {
+        this.render('anotheroo');
+    },
+    model: function(){
+       return {data: "anotheroo anotheroo!!!!!"}
     }
 });

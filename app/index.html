@@ -119,6 +119,15 @@
     {{#each}}
         <div>A todo: {{title}}</div>
     {{/each}}
+    <br />
+    <p>Want to see the content of another route? <button {{action 'transitionToAnother'}}>click here</button></p>
+    
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="anotheroo">
+    <p>***** This is the content of the 'another' template.</p>
+    <p>The model.data is: {{data}}</p>
 </script>
 
 <!-- END ember widget sample 1-->
